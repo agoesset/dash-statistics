@@ -20,43 +20,43 @@
     <style>
         #app,
         #main {
-            width: 100%;
-            margin: 0;
-            padding: 0;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         .page-content {
-            padding: 20px;
+            padding: 20px !important;
             /* Memberikan padding di sekitar konten */
         }
 
         .col-12 {
-            max-width: 100%;
+            max-width: 100% !important;
         }
 
         .card {
-            margin-bottom: 20px;
+            margin-bottom: 20px !important;
             /* Memberikan jarak antar kartu */
         }
 
         header.mb-3 {
-            margin-bottom: 20px;
+            margin-bottom: 20px !important;
             /* Memberikan jarak antara header dan konten */
         }
 
         .page-heading {
-            text-align: center;
-            margin-bottom: 0px;
+            text-align: center !important;
+            margin-bottom: 0px !important;
             /* Memberikan jarak antara heading dan konten */
         }
 
         .footer {
-            padding: 10px 20px;
+            padding: 10px 20px !important;
             /* Memberikan padding pada footer agar terlihat lebih rapi */
         }
 
         .d-flex {
-            gap: 10px;
+            gap: 10px !important;
             /* Memberikan jarak antar elemen di dalam kontainer flex */
         }
     </style>
@@ -78,141 +78,224 @@
                 <h3>Profile Statistics <a href="">@pak_suswono</a></h3>
             </div>
             <div class="page-content">
-                <section class="row">
-                    <div class="col-12 col-lg-12">
-                        <div class="row">
-                            <div class="col-12 col-lg-6 col-md-12">
-                                <div class="card">
-                                    <div class="card-body px-4 py-4-5">
-                                        <div class="d-flex align-items-center">
-                                            <div class="stats-icon purple mb-2">
-                                                <i class="iconly-boldProfile"></i>
-                                            </div>
-                                            <div class="ms-3 flex-grow-1">
-                                                <h4 class="text-primary font-extrabold mb-0">Jangkauan Akun</h4>
-                                            </div>
-                                            <h4 class="font-extrabold text-primary mb-0">112.000</h4>
+                <div class="row">
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon purple mb-2">
+                                            <i class="iconly-boldShow"></i>
                                         </div>
-
-                                        <div class="row">
-                                            <!-- Kolom Kiri -->
-                                            <div class="col-md-6">
-                                                <div class="row mt-5">
-                                                    <div class="col-7">
-                                                        <div class="d-flex align-items-center">
-                                                            <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
-                                                                <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
-                                                            </svg>
-                                                            <h5 class="mb-0 ms-3">Jakarta Pusat</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <h5 class="mb-0 text-end">862</h5>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div id="chart-jakpus"></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mt-5">
-                                                    <div class="col-7">
-                                                        <div class="d-flex align-items-center">
-                                                            <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
-                                                                <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
-                                                            </svg>
-                                                            <h5 class="mb-0 ms-3">Jakarta Barat</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <h5 class="mb-0 text-end">862</h5>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div id="chart-jakbar"></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mt-5">
-                                                    <div class="col-7">
-                                                        <div class="d-flex align-items-center">
-                                                            <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
-                                                                <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
-                                                            </svg>
-                                                            <h5 class="mb-0 ms-3">Jakarta Timur</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <h5 class="mb-0 text-end">862</h5>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div id="chart-jaktim"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Kolom Kanan -->
-                                            <div class="col-md-6">
-                                                <div class="row mt-5">
-                                                    <div class="col-7">
-                                                        <div class="d-flex align-items-center">
-                                                            <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
-                                                                <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
-                                                            </svg>
-                                                            <h5 class="mb-0 ms-3">Jakarta Selatan</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <h5 class="mb-0 text-end">862</h5>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div id="chart-jaksel"></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mt-5">
-                                                    <div class="col-7">
-                                                        <div class="d-flex align-items-center">
-                                                            <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
-                                                                <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
-                                                            </svg>
-                                                            <h5 class="mb-0 ms-3">Jakarta Utara</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <h5 class="mb-0 text-end">862</h5>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div id="chart-jakut"></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mt-5">
-                                                    <div class="col-7">
-                                                        <div class="d-flex align-items-center">
-                                                            <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
-                                                                <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
-                                                            </svg>
-                                                            <h5 class="mb-0 ms-3">Kepulauan Seribu</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <h5 class="mb-0 text-end">862</h5>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div id="chart-kepser"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Jangkauan</h6>
+                                        <h6 class="font-extrabold mb-0">112.000</h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-6 col-md-12">
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon blue mb-2">
+                                            <i class="iconly-boldProfile"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Reach/Viewers</h6>
+                                        <h6 class="font-extrabold mb-0">183.000</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon green mb-2">
+                                            <i class="iconly-boldAdd-User"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Like</h6>
+                                        <h6 class="font-extrabold mb-0">80.000</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon red mb-2">
+                                            <i class="iconly-boldBookmark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Kunjungan Profil</h6>
+                                        <h6 class="font-extrabold mb-0">112</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="stats-icon purple mb-2">
+                                    <i class="iconly-boldProfile"></i>
+                                </div>
+                                <div class="ms-3 flex-grow-1">
+                                    <h4 class="mb-0">Jangkauan Akun</h4>
+                                </div>
+                                <h4 class="mb-0">112.000</h4>
+                            </div>
+
+                            <!-- Row 1: 3 Jakarta Regions -->
+                            <div class="row">
+                                <div class="col-12 col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
+                                            <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
+                                        </svg>
+                                        <h5 class="mb-0 ms-3">Jakarta Pusat</h5>
+                                    </div>
+                                    <h5 class="mb-0 text-end">862</h5>
+                                    <div id="chart-jakpus"></div>
+                                </div>
+
+                                <div class="col-12 col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
+                                            <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
+                                        </svg>
+                                        <h5 class="mb-0 ms-3">Jakarta Barat</h5>
+                                    </div>
+                                    <h5 class="mb-0 text-end">862</h5>
+                                    <div id="chart-jakbar"></div>
+                                </div>
+
+                                <div class="col-12 col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
+                                            <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
+                                        </svg>
+                                        <h5 class="mb-0 ms-3">Jakarta Timur</h5>
+                                    </div>
+                                    <h5 class="mb-0 text-end">862</h5>
+                                    <div id="chart-jaktim"></div>
+                                </div>
+                            </div>
+
+                            <!-- Row 2: 3 More Jakarta Regions -->
+                            <div class="row mt-4">
+                                <div class="col-12 col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
+                                            <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
+                                        </svg>
+                                        <h5 class="mb-0 ms-3">Jakarta Selatan</h5>
+                                    </div>
+                                    <h5 class="mb-0 text-end">862</h5>
+                                    <div id="chart-jaksel"></div>
+                                </div>
+
+                                <div class="col-12 col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
+                                            <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
+                                        </svg>
+                                        <h5 class="mb-0 ms-3">Jakarta Utara</h5>
+                                    </div>
+                                    <h5 class="mb-0 text-end">862</h5>
+                                    <div id="chart-jakut"></div>
+                                </div>
+
+                                <div class="col-12 col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
+                                            <use xlink:href="{{asset('assets/static/images/bootstrap-icons.svg#circle-fill')}}" />
+                                        </svg>
+                                        <h5 class="mb-0 ms-3">Kepulauan Seribu</h5>
+                                    </div>
+                                    <h5 class="mb-0 text-end">862</h5>
+                                    <div id="chart-kepser"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <!-- Profile Visit -->
+                    <div class="col-12 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Kunjungan Profil</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="chart-profile-visit"></div>
                             </div>
                         </div>
                     </div>
 
-                </section>
+                    <!-- Visitors Profile & Generational Profile dalam satu card -->
+                    <div class="col-12 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Like</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <!-- Visitors Profile Chart -->
+                                    <div class="col-6">
+                                        <div id="chart-visitors-profile"></div>
+                                    </div>
+                                    <!-- Generational Profile Chart -->
+                                    <div class="col-6">
+                                        <div id="chart-generational-profile"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Kunjungan Profil</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="area"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Countdown Pemilu</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="radialGradient"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <footer>
@@ -240,6 +323,9 @@
     <script src="{{asset('assets/extensions/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{asset('assets/static/js/pages/dashboard.js')}}"></script>
 
+    <script src="{{asset('assets/extensions/dayjs/dayjs.min.js')}}"></script>
+    <script src="{{asset('assets/extensions/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{asset('assets/static/js/pages/ui-apexchart.js')}}"></script>
 </body>
 
 </html>
