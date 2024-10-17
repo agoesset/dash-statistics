@@ -14,6 +14,7 @@ class DashboardController extends Controller
     {
         $jangkauan = Jangkauan::all();
         $reachData = Reach::all();
+        // dd($reachData);
         $likeData = Like::selectRaw('
             SUM(like_male) as like_male,
             SUM(like_female) as like_female,
