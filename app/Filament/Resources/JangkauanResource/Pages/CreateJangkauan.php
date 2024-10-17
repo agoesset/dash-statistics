@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateJangkauan extends CreateRecord
 {
     protected static string $resource = JangkauanResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
