@@ -117,7 +117,7 @@
                     <div class="elfsight-app-cebc6f5c-25af-4a6a-ab18-fcbb2455f8b3" data-elfsight-app-lazy></div>
                 </div>
 
-                <h4 id="date-output" class="font-extrabold text-center my-3"></h4>
+                <!-- <h4 id="date-output" class="font-extrabold text-center my-3"></h4> -->
 
                 <div class="row">
                     <div class="col-6 col-lg-3 col-md-6">
