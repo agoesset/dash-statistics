@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Budget;
 use App\Models\Jangkauan;
 use App\Models\Kunjungan;
 use App\Models\Like;
@@ -25,6 +26,8 @@ class DashboardController extends Controller
         ')->first();
         $kunjungan = Kunjungan::all();
 
+        $budget = Budget::latest()->first();
+
         // dd($likeData);
         // Mengirim data ke view
         return view('dash', compact(
@@ -32,6 +35,7 @@ class DashboardController extends Controller
             'reachData',
             'likeData',
             'kunjungan',
+            'budget',
         ));
     }
 }
