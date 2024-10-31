@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,17 +18,9 @@ class KunjunganFactory extends Factory
     public function definition(): array
     {
         return [
-            'hari' => $this->faker->randomElement([
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday"
-            ]),
-            'like_male' => $this->faker->numberBetween(50, 500),
-            'like_female' => $this->faker->numberBetween(50, 500),
+            'tgl_kunjungan' => Carbon::now()->subDays(rand(0, 13)),
+            'like_male' => $this->faker->numberBetween(50, 400),
+            'like_female' => $this->faker->numberBetween(50, 400),
         ];
     }
 }

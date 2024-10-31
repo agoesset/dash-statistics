@@ -13,15 +13,7 @@ return new class extends Migration
     {
         Schema::create('kunjungans', function (Blueprint $table) {
             $table->id();
-            $table->enum('hari', [
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-            ]);
+            $table->date('tgl_kunjungan');
             $table->integer('like_male');
             $table->integer('like_female');
             $table->timestamps();

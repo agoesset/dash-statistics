@@ -13,15 +13,7 @@ return new class extends Migration
     {
         Schema::create('reaches', function (Blueprint $table) {
             $table->id();
-            $table->enum('hari', [
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-            ]);
+            $table->date('tgl_reach');
             $table->integer('value');
             $table->timestamps();
         });

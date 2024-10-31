@@ -13,15 +13,7 @@ return new class extends Migration
     {
         Schema::create('jangkauans', function (Blueprint $table) {
             $table->id();
-            $table->enum('hari', [
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-            ]);
+            $table->date('tgl_jangkauan');
             $table->integer('jakpus');
             $table->integer('jakbar');
             $table->integer('jaktim');

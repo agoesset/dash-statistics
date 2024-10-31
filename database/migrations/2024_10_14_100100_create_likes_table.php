@@ -13,18 +13,9 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->enum('hari', [
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-            ]);
+            $table->date('tgl_like');
             $table->integer('like_male');
             $table->integer('like_female');
-            $table->integer('like_gen_alpha');
             $table->integer('like_gen_z');
             $table->integer('like_gen_millenial');
             $table->integer('like_baby_boomer');

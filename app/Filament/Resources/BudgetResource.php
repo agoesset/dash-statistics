@@ -23,6 +23,8 @@ class BudgetResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\DatePicker::make('tgl_budget')
+                    ->required(),
                 Forms\Components\TextInput::make('biaya_perviewers')
                     ->required()
                     ->maxLength(255),
@@ -36,11 +38,12 @@ class BudgetResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('tgl_budget')
+                    ->date()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('biaya_perviewers')
-                    ->money('IDR', true) // Menggunakan format uang IDR
                     ->searchable(),
                 Tables\Columns\TextColumn::make('total_dibelanjakan')
-                    ->money('IDR', true) // Menggunakan format uang IDR
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

@@ -10,7 +10,7 @@ class Reach extends Model
     use HasFactory;
 
     protected $fillable = [
-        'hari',
+        'tgl_reach',
         'value'
     ];
 }

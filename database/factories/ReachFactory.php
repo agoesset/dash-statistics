@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,16 +18,8 @@ class ReachFactory extends Factory
     public function definition(): array
     {
         return [
-            'hari' => $this->faker->randomElement([
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday"
-            ]),
-            'value' => $this->faker->numberBetween(100, 5000),
+            'tgl_reach' => Carbon::now()->subDays(rand(0, 13)),
+            'value' => $this->faker->numberBetween(1000, 5000),
         ];
     }
 }

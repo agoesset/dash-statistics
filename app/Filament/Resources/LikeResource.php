@@ -6,12 +6,9 @@ use App\Filament\Resources\LikeResource\Pages;
 use App\Filament\Resources\LikeResource\RelationManagers;
 use App\Models\Like;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -26,41 +23,23 @@ class LikeResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('hari')
-                    ->options([
-                        "Sunday" => "Sunday",
-                        "Monday" => "Monday",
-                        "Tuesday" => "Tuesday",
-                        "Wednesday" => "Wednesday",
-                        "Thursday" => "Thursday",
-                        "Friday" => "Friday",
-                        "Saturday" => "Saturday",
-                    ])
+                Forms\Components\DatePicker::make('tgl_like')
                     ->required(),
-                TextInput::make('like_male')
-                    ->numeric()
+                Forms\Components\TextInput::make('like_male')
                     ->required()
-                    ->label('Likes from Male'),
-                TextInput::make('like_female')
-                    ->numeric()
+                    ->numeric(),
+                Forms\Components\TextInput::make('like_female')
                     ->required()
-                    ->label('Likes from Female'),
-                TextInput::make('like_gen_alpha')
-                    ->numeric()
+                    ->numeric(),
+                Forms\Components\TextInput::make('like_gen_z')
                     ->required()
-                    ->label('Likes from Gen Alpha'),
-                TextInput::make('like_gen_z')
-                    ->numeric()
+                    ->numeric(),
+                Forms\Components\TextInput::make('like_gen_millenial')
                     ->required()
-                    ->label('Likes from Gen Z'),
-                TextInput::make('like_gen_millenial')
-                    ->numeric()
+                    ->numeric(),
+                Forms\Components\TextInput::make('like_baby_boomer')
                     ->required()
-                    ->label('Likes from Millennials'),
-                TextInput::make('like_baby_boomer')
-                    ->numeric()
-                    ->required()
-                    ->label('Likes from Baby Boomers'),
+                    ->numeric(),
             ]);
     }
 
@@ -68,31 +47,32 @@ class LikeResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('hari')
-                    ->label('Hari')
+                Tables\Columns\TextColumn::make('tgl_like')
+                    ->date()
                     ->sortable(),
-                TextColumn::make('like_male')
-                    ->label('Likes from Male')
+                Tables\Columns\TextColumn::make('like_male')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('like_female')
-                    ->label('Likes from Female')
+                Tables\Columns\TextColumn::make('like_female')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('like_gen_alpha')
-                    ->label('Likes from Gen Alpha')
+                Tables\Columns\TextColumn::make('like_gen_z')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('like_gen_z')
-                    ->label('Likes from Gen Z')
+                Tables\Columns\TextColumn::make('like_gen_millenial')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('like_gen_millenial')
-                    ->label('Likes from Millennials')
+                Tables\Columns\TextColumn::make('like_baby_boomer')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('like_baby_boomer')
-                    ->label('Likes from Baby Boomers')
-                    ->sortable(),
-                TextColumn::make('created_at')
-                    ->label('Dibuat Pada')
+                Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

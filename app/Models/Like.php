@@ -10,10 +10,9 @@ class Like extends Model
     use HasFactory;
 
     protected $fillable = [
-        'hari',
+        'tgl_like',
         'like_male',
         'like_female',
-        'like_gen_alpha',
         'like_gen_z',
         'like_gen_millenial',
         'like_baby_boomer'

@@ -10,7 +10,7 @@ class Jangkauan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'hari',
+        'tgl_jangkauan',
         'jakpus',
         'jakbar',
         'jaktim',

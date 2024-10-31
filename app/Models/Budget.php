@@ -10,6 +10,7 @@ class Budget extends Model
     use HasFactory;
 
     protected $fillable = [
+        'tgl_budget',
         'biaya_perviewers',
         'total_dibelanjakan',
     ];

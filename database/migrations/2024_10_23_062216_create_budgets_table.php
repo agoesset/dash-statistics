@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('budgets', function (Blueprint $table) {
             $table->id();
+            $table->date('tgl_budget');
             $table->string('biaya_perviewers');
             $table->string('total_dibelanjakan');
             $table->timestamps();

@@ -9,7 +9,7 @@ class Kunjungan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'hari',
+        'tgl_kunjungan',
         'like_male',
         'like_female'
     ];

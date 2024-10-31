@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Budget;
 use App\Models\Jangkauan;
 use App\Models\Kunjungan;
 use App\Models\Like;
@@ -25,15 +26,17 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // Memasukkan data palsu ke tabel jangkauans
-        Jangkauan::factory(7)->create(); // Mengisi tabel jangkauans dengan 7 data
+        Jangkauan::factory(14)->create(); // Mengisi tabel jangkauans dengan 7 data
 
         // Memasukkan data palsu ke tabel reaches
-        Reach::factory(7)->create(); // Mengisi tabel reaches dengan 7 data
+        Reach::factory(14)->create(); // Mengisi tabel reaches dengan 7 data
 
         // Memasukkan data palsu ke tabel likes
-        Like::factory(7)->create(); // Mengisi tabel likes dengan 7 data
+        Like::factory(14)->create(); // Mengisi tabel likes dengan 7 data
 
         // Memasukkan data palsu ke tabel kunjungans
-        Kunjungan::factory(7)->create(); // Mengisi tabel kunjungans dengan 7 data
+        Kunjungan::factory(14)->create(); // Mengisi tabel kunjungans dengan 7 data
+
+        Budget::factory(14)->create(); // Mengisi tabel kunjungans dengan 7 data
     }
 }

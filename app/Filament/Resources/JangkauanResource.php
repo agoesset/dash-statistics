@@ -6,12 +6,9 @@ use App\Filament\Resources\JangkauanResource\Pages;
 use App\Filament\Resources\JangkauanResource\RelationManagers;
 use App\Models\Jangkauan;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -26,35 +23,26 @@ class JangkauanResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('hari')
-                    ->options([
-                        "Sunday" => "Sunday",
-                        "Monday" => "Monday",
-                        "Tuesday" => "Tuesday",
-                        "Wednesday" => "Wednesday",
-                        "Thursday" => "Thursday",
-                        "Friday" => "Friday",
-                        "Saturday" => "Saturday",
-                    ])
+                Forms\Components\DatePicker::make('tgl_jangkauan')
                     ->required(),
-                TextInput::make('jakpus')
-                    ->numeric()
-                    ->required(),
-                TextInput::make('jakbar')
-                    ->numeric()
-                    ->required(),
-                TextInput::make('jaktim')
-                    ->numeric()
-                    ->required(),
-                TextInput::make('jaksel')
-                    ->numeric()
-                    ->required(),
-                TextInput::make('jakut')
-                    ->numeric()
-                    ->required(),
-                TextInput::make('kepser')
-                    ->numeric()
-                    ->required(),
+                Forms\Components\TextInput::make('jakpus')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('jakbar')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('jaktim')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('jaksel')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('jakut')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('kepser')
+                    ->required()
+                    ->numeric(),
             ]);
     }
 
@@ -62,31 +50,35 @@ class JangkauanResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('hari')
-                    ->label('Hari')
+                Tables\Columns\TextColumn::make('tgl_jangkauan')
+                    ->date()
                     ->sortable(),
-                TextColumn::make('jakpus')
-                    ->label('Jakarta Pusat')
+                Tables\Columns\TextColumn::make('jakpus')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('jakbar')
-                    ->label('Jakarta Barat')
+                Tables\Columns\TextColumn::make('jakbar')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('jaktim')
-                    ->label('Jakarta Timur')
+                Tables\Columns\TextColumn::make('jaktim')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('jaksel')
-                    ->label('Jakarta Selatan')
+                Tables\Columns\TextColumn::make('jaksel')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('jakut')
-                    ->label('Jakarta Utara')
+                Tables\Columns\TextColumn::make('jakut')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('kepser')
-                    ->label('Kepulauan Seribu')
+                Tables\Columns\TextColumn::make('kepser')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('created_at')
-                    ->label('Dibuat Pada')
+                Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

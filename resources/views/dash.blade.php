@@ -111,13 +111,31 @@
                     </div>
                 </div>
 
-
                 <div class="container">
                     <script src="https://static.elfsight.com/platform/platform.js" async></script>
                     <div class="elfsight-app-cebc6f5c-25af-4a6a-ab18-fcbb2455f8b3" data-elfsight-app-lazy></div>
                 </div>
 
                 <!-- <h4 id="date-output" class="font-extrabold text-center my-3"></h4> -->
+
+                <div class="container d-flex justify-content-center">
+                    <form action="{{ route('dashboard') }}" method="GET" class="w-100 my-4 text-center">
+                        <div class="row g-2 justify-content-center">
+                            <div class="col-md-4">
+                                <label for="start_date">Tanggal Mulai:</label>
+                                <input type="date" id="start_date" name="start_date" class="form-control" value="{{ $startDate }}">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="end_date">Tanggal Akhir:</label>
+                                <input type="date" id="end_date" name="end_date" class="form-control" value="{{ $endDate }}">
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary w-100">Filter</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
 
                 <div class="row">
                     <div class="col-6 col-lg-4 col-md-6">
@@ -475,6 +493,12 @@
     </script>
 
     <script>
+        function formatNumber(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+    </script>
+
+    <script>
         const jangkauan = @json($jangkauan);
 
         function sumValuesForRegion(region) {
@@ -493,13 +517,13 @@
         const totalValuesKeseluruhan = totalJakpus + totalJakbar + totalJaktim + totalJaksel + totalJakut + totalKepser;
 
         // Tampilkan total per kota di HTML
-        document.getElementById('total-jakpus').innerText = totalJakpus;
-        document.getElementById('total-jakbar').innerText = totalJakbar;
-        document.getElementById('total-jaktim').innerText = totalJaktim;
-        document.getElementById('total-jaksel').innerText = totalJaksel;
-        document.getElementById('total-jakut').innerText = totalJakut;
-        document.getElementById('total-kepser').innerText = totalKepser;
-        document.getElementById('total-semua-kota').innerText = totalValuesKeseluruhan;
+        document.getElementById('total-jakpus').innerText = formatNumber(totalJakpus);
+        document.getElementById('total-jakbar').innerText = formatNumber(totalJakbar);
+        document.getElementById('total-jaktim').innerText = formatNumber(totalJaktim);
+        document.getElementById('total-jaksel').innerText = formatNumber(totalJaksel);
+        document.getElementById('total-jakut').innerText = formatNumber(totalJakut);
+        document.getElementById('total-kepser').innerText = formatNumber(totalKepser);
+        document.getElementById('total-semua-kota').innerText = formatNumber(totalValuesKeseluruhan);
 
         // Membuat chart sederhana untuk setiap kota (berdasarkan hari)
         function createChartOptions(data, color) {
@@ -526,7 +550,7 @@
                     enabled: false,
                 },
                 xaxis: {
-                    categories: jangkauan.map(item => item.hari),
+                    categories: jangkauan.map(item => item.tgl_jangkauan),
                     axisBorder: {
                         show: false,
                     },
@@ -560,12 +584,13 @@
         const reachData = @json($reachData);
 
         // Ekstrak hari dan value dari reachData
-        const days = reachData.map(item => item.hari); // Hari dalam data reach
+        const days = reachData.map(item => item.tgl_reach); // Hari dalam data reach
         const values = reachData.map(item => item.value); // Value reach
 
         // Hitung total value dari reachData
         const totalValue = values.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        document.getElementById('total-reach').innerText = totalValue;
+        document.getElementById('total-reach').innerText = formatNumber(totalValue);
+
 
 
         // Opsi untuk chart reach
@@ -609,12 +634,11 @@
         // Menghitung total like
         const totalLikes = Number(likeData.like_male) +
             Number(likeData.like_female) +
-            Number(likeData.like_gen_alpha) +
             Number(likeData.like_gen_z) +
             Number(likeData.like_gen_millenial) +
             Number(likeData.like_baby_boomer);
 
-        document.getElementById('total-like').innerText = totalLikes;
+        document.getElementById('total-like').innerText = formatNumber(totalLikes);
 
         // Data untuk diagram gender (Male vs Female)
         const optionsVisitorsProfile = {
@@ -640,9 +664,9 @@
 
         // Data untuk diagram generasi
         const optionsGenerationalProfile = {
-            series: [Number(likeData.like_gen_alpha), Number(likeData.like_gen_z), Number(likeData.like_gen_millenial), Number(likeData.like_baby_boomer)], // Persentase generasi
-            labels: ["Gen Alpha", "Gen Z", "Millennial", "Baby Boomer"],
-            colors: ["#FF4560", "#00E396", "#008FFB", "#775DD0"],
+            series: [Number(likeData.like_gen_z), Number(likeData.like_gen_millenial), Number(likeData.like_baby_boomer)], // Persentase generasi
+            labels: ["Gen Z", "Millennial", "Baby Boomer"],
+            colors: ["#00E396", "#008FFB", "#775DD0"],
             chart: {
                 type: "donut",
                 width: "100%",
@@ -682,7 +706,7 @@
         const likeFemaleData = kunjungan.map(item => item.like_female);
 
         // Ekstrak data hari untuk digunakan di x-axis
-        const hari = kunjungan.map(item => item.hari);
+        const hari = kunjungan.map(item => item.tgl_kunjungan);
 
         // Menghitung total like_male dan like_female
         const totalLikeMale = likeMaleData.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -690,7 +714,7 @@
 
         // Menghitung total semua kunjungan (like_male + like_female)
         const totalKunjungan = totalLikeMale + totalLikeFemale;
-        document.getElementById('total-kunjungan').innerText = totalKunjungan;
+        document.getElementById('total-kunjungan').innerText = formatNumber(totalKunjungan);
 
 
         var areaOptions = {
@@ -722,6 +746,66 @@
 
         area.render();
     </script>
+
+    <script>
+        const jangkauan = @json($jangkauan);
+
+        // Mengambil data tanggal jangkauan dari JSON
+        const tanggalJangkauan = jangkauan.map(item => item.tgl_jangkauan);
+
+        // Membuat opsi chart dengan data tanggal yang benar
+        function createChartOptions(data, color) {
+            return {
+                series: [{
+                    name: "Akun yang dijangkau",
+                    data: data,
+                }],
+                chart: {
+                    height: 80,
+                    type: "area",
+                    toolbar: {
+                        show: false
+                    },
+                },
+                colors: [color],
+                stroke: {
+                    width: 2
+                },
+                grid: {
+                    show: false
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                xaxis: {
+                    categories: tanggalJangkauan, // Memastikan tanggal digunakan sebagai kategori
+                    axisBorder: {
+                        show: false,
+                    },
+                    axisTicks: {
+                        show: false,
+                    },
+                    labels: {
+                        show: true, // Tampilkan tanggal di label
+                    },
+                },
+                yaxis: {
+                    labels: {
+                        show: false
+                    }
+                },
+            };
+        }
+
+        // Render chart untuk masing-masing kota
+        new ApexCharts(document.querySelector("#chart-jakpus"), createChartOptions(jangkauan.map(item => item.jakpus), "#00e396")).render();
+        new ApexCharts(document.querySelector("#chart-jakbar"), createChartOptions(jangkauan.map(item => item.jakbar), "#5350e9")).render();
+        new ApexCharts(document.querySelector("#chart-jaktim"), createChartOptions(jangkauan.map(item => item.jaktim), "#feb019")).render();
+        new ApexCharts(document.querySelector("#chart-jaksel"), createChartOptions(jangkauan.map(item => item.jaksel), "#85f9ff")).render();
+        new ApexCharts(document.querySelector("#chart-jakut"), createChartOptions(jangkauan.map(item => item.jakut), "#f46a6a")).render();
+        new ApexCharts(document.querySelector("#chart-kepser"), createChartOptions(jangkauan.map(item => item.kepser), "#7c341d")).render();
+    </script>
+
 
 </body>
 

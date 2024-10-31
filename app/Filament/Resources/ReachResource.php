@@ -6,12 +6,9 @@ use App\Filament\Resources\ReachResource\Pages;
 use App\Filament\Resources\ReachResource\RelationManagers;
 use App\Models\Reach;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -26,21 +23,11 @@ class ReachResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('hari')
-                    ->options([
-                        "Sunday" => "Sunday",
-                        "Monday" => "Monday",
-                        "Tuesday" => "Tuesday",
-                        "Wednesday" => "Wednesday",
-                        "Thursday" => "Thursday",
-                        "Friday" => "Friday",
-                        "Saturday" => "Saturday",
-                    ])
+                Forms\Components\DatePicker::make('tgl_reach')
                     ->required(),
-                TextInput::make('value')
-                    ->numeric()
+                Forms\Components\TextInput::make('value')
                     ->required()
-                    ->label('Reach Value'), // Label untuk kolom nilai
+                    ->numeric(),
             ]);
     }
 
@@ -48,16 +35,20 @@ class ReachResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('hari')
-                    ->label('Hari')
+                Tables\Columns\TextColumn::make('tgl_reach')
+                    ->date()
                     ->sortable(),
-                TextColumn::make('value')
-                    ->label('Reach Value')
+                Tables\Columns\TextColumn::make('value')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('created_at')
-                    ->label('Dibuat Pada')
+                Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

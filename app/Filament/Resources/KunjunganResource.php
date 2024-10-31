@@ -6,12 +6,9 @@ use App\Filament\Resources\KunjunganResource\Pages;
 use App\Filament\Resources\KunjunganResource\RelationManagers;
 use App\Models\Kunjungan;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -26,26 +23,14 @@ class KunjunganResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('hari')
-                    ->options([
-                        "Sunday" => "Sunday",
-                        "Monday" => "Monday",
-                        "Tuesday" => "Tuesday",
-                        "Wednesday" => "Wednesday",
-                        "Thursday" => "Thursday",
-                        "Friday" => "Friday",
-                        "Saturday" => "Saturday",
-                    ])
+                Forms\Components\DatePicker::make('tgl_kunjungan')
+                    ->required(),
+                Forms\Components\TextInput::make('like_male')
                     ->required()
-                    ->label('Hari'),
-                TextInput::make('like_male')
-                    ->numeric()
+                    ->numeric(),
+                Forms\Components\TextInput::make('like_female')
                     ->required()
-                    ->label('Likes from Male'),
-                TextInput::make('like_female')
-                    ->numeric()
-                    ->required()
-                    ->label('Likes from Female'),
+                    ->numeric(),
             ]);
     }
 
@@ -53,19 +38,23 @@ class KunjunganResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('hari')
-                    ->label('Hari')
+                Tables\Columns\TextColumn::make('tgl_kunjungan')
+                    ->date()
                     ->sortable(),
-                TextColumn::make('like_male')
-                    ->label('Likes from Male')
+                Tables\Columns\TextColumn::make('like_male')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('like_female')
-                    ->label('Likes from Female')
+                Tables\Columns\TextColumn::make('like_female')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('created_at')
-                    ->label('Dibuat Pada')
+                Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
